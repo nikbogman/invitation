@@ -1,5 +1,4 @@
 import React from "react";
-import { getGuests, setTeacher } from "./firebase.util";
 
 function Form({ name }) {
     const [isPublished, setIsPublished] = React.useState(null);
@@ -14,9 +13,6 @@ function Form({ name }) {
     let _handleSubmit = async (event) => {
         event.preventDefault();
         event.stopPropagation();
-        let all = await getGuests();
-        let teacher = await setTeacher("pushkarova");
-        console.log(teacher)
     }
 
     return (

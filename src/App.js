@@ -10,7 +10,6 @@ function useQuery() {
 
 function App() {
   let query = useQuery();
-
   return (
     <div className="App">
       <header className="App-header">
