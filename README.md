@@ -1,6 +1,6 @@
-# Prom invitations
+# Prom invitations 🎓
 
-🎓 A simple online prom invitation service.  
+A simple online prom invitation service.  
 
 The procedure is simple.  
 
