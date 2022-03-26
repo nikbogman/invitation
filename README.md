@@ -1,5 +1,9 @@
 # Prom invitations 🎓
 
+[] React frontend
+[x] Rest API
+[] React implementation
+
 A simple online prom invitation service.  
 
 The procedure is simple.  
@@ -13,5 +17,5 @@ Now here comes the installation part.
 
 For the backend go to the `py/` subfolder and do `pip install -r requirements`. From there on you could just run `./manage.py runserver` and you're done.
 
-For the front end (...)
-*__@one-moonman please add ur part here__*
+For the front end (...)  
+__**please add ur part here**__
