@@ -1,8 +1,8 @@
 # Prom invitations 🎓
 
-[] React frontend
-[x] Rest API
-[] React implementation
+- [] React frontend
+- [x] Rest API
+- [] React implementation
 
 A simple online prom invitation service.  
 
