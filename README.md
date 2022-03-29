@@ -17,5 +17,4 @@ Now here comes the installation part.
 
 For the backend go to the `py/` subfolder and do `pip install -r requirements`. From there on you could just run `./manage.py runserver` and you're done.
 
-For the front end (...)  
-__**please add ur part here**__
+For the front end go to the `js/` subfolder and do `npm install`. From there on you could just run `npm start` and you're done.
