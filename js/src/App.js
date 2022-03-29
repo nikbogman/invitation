@@ -12,13 +12,9 @@ function App() {
   let query = useQuery();
   return (
     <div className="App">
-      <header className="App-header">
-        <Form name={query.get('name')} />
-      </header>
+      <Form name={query.get('name')} />
     </div>
   );
 }
-
-
 
 export default App;
