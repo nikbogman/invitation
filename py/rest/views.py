@@ -12,11 +12,5 @@ class TeacherViewSet(viewsets.ModelViewSet):
     serializer_class = TeacherSerializer
     
     def create(self, validated_data):
-
-        is_coming = False
-        a = Teacher.objects.get_or_create(
-            name=str(validated_data.data["name"]).capitalize())
-        if validated_data.data["coming"] == "True":
-            is_coming = True
-        a.update(coming=is_coming)
-        a.save() 
+        obj, created =  Teacher.objects.update_or_create(
+                        name=str(validated_data.data["name"]).capitalize(),coming=False, defaults={"coming":True})
