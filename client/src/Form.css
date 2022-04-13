@@ -1,19 +1,25 @@
-button{
+form {
+    transform: translateY(-15%);
+}
+
+button {
     background-color: transparent;
+    color: black;
     border: 1px solid black;
-    padding: 25px;
+    padding: 20px;
     font-family: 'Snell Roundhand';
     font-size: inherit;
     font-weight: bold;
-
-    margin-top: 5vh;
+    margin-top: 2.5vh;
+    font-size: calc(15px + 2vmin);
 }
 
-label{
+label {
     font-weight: bold;
+    color: black;
 }
 
-input{
+input {
     margin-bottom: 7.5vh;
+    color: black;
 }
-

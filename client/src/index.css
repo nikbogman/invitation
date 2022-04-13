@@ -11,9 +11,8 @@
 
 body {
   margin: 0;
-
   font-family: 'Snell Roundhand';
-  background-image: url('../public/background.png');
+  background: url('../public/background.png');
 }
 
 code {

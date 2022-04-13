@@ -1,31 +1,21 @@
-
 .App {
   text-align: center;
-    min-height: 100vh;
+  max-height: 100vh;
+  max-width: initial;
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: center;
   font-size: calc(30px + 2vmin);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.f2 {
+  transform: translate(-5vh, -10vh);
+  width: 50vh;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.f1 {
+  position: fixed;
+  transform: translate(+10vh, +45vh);
+  width: 45vh;
 }

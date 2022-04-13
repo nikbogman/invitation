@@ -18,6 +18,7 @@ function Form({ name }) {
             `${process.env.REACT_APP_SERVER_URL}teachers/`,
             {
                 method: 'POST',
+                mode: 'no-cors',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, coming })
             }
@@ -25,7 +26,7 @@ function Form({ name }) {
     }
 
     return (
-        <>
+        <div className="Form">
             {clicked ?
                 <h3>Благодарим за отделеното внимание!</h3>
                 :
@@ -52,9 +53,9 @@ function Form({ name }) {
                             Няма да присъствам
                         </label>
                     </div>
-                    <button type="submit">Потвърждавам избора си</button>
+                    <button type="submit">Потвърди</button>
                 </form >}
-        </>
+        </div>
     );
 }
 
