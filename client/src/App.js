@@ -18,7 +18,6 @@ function App() {
     <div className="App">
       <img src={flower2} className="f2" />
       <img src={flower1} className="f1" />
-
       {name ? < Form name={name} /> : <GuestsList />}
     </div>
   );

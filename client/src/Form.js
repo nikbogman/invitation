@@ -13,6 +13,7 @@ function Form({ name }) {
     let _handleSubmit = async (event) => {
         event.preventDefault();
         event.stopPropagation();
+        if (!coming) return alert("Трябва да изберете преди да потвърдите")
         setClicked(!clicked);
         await fetch(
             `${process.env.REACT_APP_SERVER_URL}teachers/`,
