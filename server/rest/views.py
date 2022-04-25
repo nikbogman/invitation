@@ -1,8 +1,8 @@
-from rest_framework import viewsets
+from rest_framework import status
 from rest_framework import permissions
 from .serializers import TeacherSerializer
 from .models import Teacher
-
+from rest_framework import viewsets
 
 class TeacherViewSet(viewsets.ModelViewSet):
     """
@@ -10,4 +10,3 @@ class TeacherViewSet(viewsets.ModelViewSet):
     """
     queryset = Teacher.objects.all()
     serializer_class = TeacherSerializer
-

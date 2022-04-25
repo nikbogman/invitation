@@ -13,17 +13,21 @@ function Form({ name }) {
     let _handleSubmit = async (event) => {
         event.preventDefault();
         event.stopPropagation();
-        if (!coming) return alert("Трябва да изберете преди да потвърдите")
+
+		// fixed no option for no (add !!)
+        if (!!coming) return alert("Трябва да изберете преди да потвърдите")
         setClicked(!clicked);
-        await fetch(
-            `${process.env.REACT_APP_SERVER_URL}teachers/`,
-            {
+
+        await fetch('http://api.confest.im/teachers/', {
                 method: 'POST',
-                mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, coming })
-            }
-        )
+                // mode:"no-cors",
+                // https://han.gl/TkiNv - this doesn't work
+                headers: {'Content-Type':'application/json', 'Accept':'application/json'},
+                body: JSON.stringify({
+                	name:name,
+                	coming:coming
+               	})
+            })
     }
 
     return (

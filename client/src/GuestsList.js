@@ -5,7 +5,7 @@ function GuestsList() {
     const [all, setAll] = React.useState();
 
     React.useEffect(() => {
-        fetch(`${process.env.REACT_APP_SERVER_URL}teachers/`)
+        fetch(`http://api.confest.im/teachers/`)
             .then(res => res.json())
             .then(data => setAll(data))
     }, [])
