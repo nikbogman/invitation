@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   max-height: 100vh;
+  height: 100%;
   max-width: initial;
   display: flex;
   flex-flow: row wrap;
