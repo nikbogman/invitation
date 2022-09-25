@@ -1,10 +1,11 @@
 import { Database } from './deps.ts';
 
 export interface Guest {
-    abbriviation: boolean,
+    id: string,
+    abbriviation: string,
     firstName: string,
     lastName: string,
-    attending: boolean
+    attending?: boolean
 }
 
 export const db = new Database<Guest>('./db.json');

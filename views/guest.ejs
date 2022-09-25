@@ -1,3 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Invitation to<%= data.abbriviation + data.lastName%>
+    </title>
+</head>
+
 <body>
-    Hello <%=name%>
+    <div>
+        <h1>Hello <%= data.abbriviation + "." + data.lastName%>
+        </h1>
+        <p>Would like you attend our event?</p>
+        <form id="choose" action=<%=data.id%> method="POST">
+            <input name="choice" type="radio" id="no" value="false" />
+            <label for="no">No</label>
+            <input name="choice" type="radio" id="yes" value="true" />
+            <label for="yes">Yes</label>
+        </form>
+        <button id="submitButton">Send</button>
+    </div>
 </body>
+
+<script>
+    const element = document.getElementById("submitButton");
+    element.addEventListener("click", function () {
+        const checked = document.querySelector('input[name="choice"]:checked');
+        if (!checked) return alert("You have to choose before submitting")
+        else return document.getElementById("choose").submit()
+    });
+</script>
+
+</html>
