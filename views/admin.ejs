@@ -9,7 +9,35 @@
 </head>
 
 <body>
+    <form id="addGuest" action="/admin" method="POST">
+        <label for="abbriviation">abbriviaiton</label>
+        <input type="text" name="abbriviation" />
+        <label for="firstName">firstName</label>
+        <input type="text" name="firstName" />
+        <label for="lastName">lastName</label>
+        <input type="text" name="lastName" />
+        <input type="submit" disabled style="display: none" aria-hidden="true" />
+    </form>
+    <button id="submitButton">Send</button>
+    <% for (const guest of data) { %>
+        <%= guest.abbriviaiton %>
+            <%= guest.firstName %>
+                <%= guest.lastName %>
+                    <%= guest.attending %>
+                        <%= guest.id %>
+                            <% } %>
 
 </body>
+
+<script>
+    const element = document.getElementById("submitButton");
+    element.addEventListener("click", function () {
+        const inputs = document.querySelectorAll('input[type="text"]');
+        const values = []
+        inputs.forEach(i => values.push(i.value))
+        if (values.includes('')) return alert("You have to choose before submitting")
+        else return document.getElementById("addGuest").submit()
+    });
+</script>
 
 </html>

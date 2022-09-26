@@ -1,5 +1,5 @@
 import { db } from "./db.ts";
-import { Application, Router } from "./deps.ts";
+import { Application, Router, generateId } from "./deps.ts";
 import { renderEjs } from "./utils.ts";
 
 const app = new Application();
@@ -55,9 +55,25 @@ router
         ctx.response.body = await renderEjs(`sorry`, {});
     })
     .get("/", ctx => ctx.response.redirect("/admin"))
-    .get("/admin", ctx => {
-        ctx.response.redirect("/admin")
-    });
+    .get("/admin", async ctx => {
+        const guests  = await db.findMany({});
+        ctx.response.body = await renderEjs(`admin`, {data: guests});
+    })
+    .post("/admin", async ctx => {
+        const result = ctx.request.body({ type: "form" });
+        const value = await result.value;
+        const abbriviation = value.get("abbriviation");
+        const firstName = value.get("firstName");
+        const lastName = value.get("lastName");
+        if(!abbriviation || !firstName || !lastName) return;
+        await db.insertOne({
+            id:generateId(),
+            abbriviation,
+            firstName,
+            lastName
+        })
+        ctx.response.redirect('/admin');
+    })
 
 app.use(router.routes());
 app.use(router.allowedMethods());

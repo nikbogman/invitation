@@ -5,5 +5,11 @@
 		"firstName": "Koko",
 		"lastName": "Boko",
 		"attending": false
+	},
+	{
+		"id": "D6875D",
+		"abbriviation": "Mr",
+		"firstName": "Stephan",
+		"lastName": "Nikola"
 	}
 ]
