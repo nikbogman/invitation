@@ -1,5 +1,5 @@
 import { db } from "./db.ts";
-import { Application, Router, generateId } from "./deps.ts";
+import { Application, Router, generateId } from "../deps.ts";
 import { renderEjs } from "./utils.ts";
 
 const app = new Application();
@@ -17,7 +17,7 @@ app.use(async (ctx, next) => {
         await next();
     } catch (err) {
         if (err.status === 404) {
-            ctx.response.body = await renderEjs(`404`, {});
+            ctx.response.body = await renderEjs(`error`, {});
         } else {
             throw err;
         }
@@ -57,6 +57,7 @@ router
     .get("/", ctx => ctx.response.redirect("/admin"))
     .get("/admin", async ctx => {
         const guests  = await db.findMany({});
+        console.log(guests)
         ctx.response.body = await renderEjs(`admin`, {data: guests});
     })
     .post("/admin", async ctx => {

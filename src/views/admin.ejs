@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+            'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+            sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+
+        font-size: calc(10px + 2vmin);
+    }
+
+    .formdiv {
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    form {
+        padding: 5vh 0 5vh 0;
+        display: grid;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section {
+        justify-self: end;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td,
+    th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<body>
+    <div class="formdiv">
+        <form id="addGuest" action="/admin" method="POST">
+            <section>
+                <label for="abbriviation">abbriviaiton</label>
+                <input type="text" name="abbriviation" />
+            </section>
+            <section>
+                <label for="firstName">firstName</label>
+                <input type="text" name="firstName" />
+            </section>
+            <section>
+                <label for="lastName">lastName</label>
+                <input type="text" name="lastName" />
+            </section>
+            <input type="submit" disabled style="display: none" aria-hidden="true" />
+            <button id="submitButton">Send</button>
+        </form>
+    </div>
+    <div>
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Abbr</th>
+                <th>firstname</th>
+                <th>lastname</th>
+                <th>attending</th>
+            </tr>
+            <% for (const guest of data) { %>
+                <tr>
+                    <td>
+                        <%= guest.id %>
+                    </td>
+                    <td>
+                        <%= guest.abbriviation %>
+                    </td>
+                    <td>
+                        <%= guest.firstName %>
+                    </td>
+                    <td>
+                        <%= guest.lastName %>
+                    </td>
+                    <td>
+                        <% if(guest.attending===undefined) { %>
+                            0
+                            <% } else { %>
+                                <%= guest.attending ? "yes" : "no" %>
+                                    <% } %>
+                    </td>
+                </tr>
+                <% } %>
+        </table>
+    </div>
+
+
+</body>
+
+<script>
+    const element = document.getElementById("submitButton");
+    element.addEventListener("click", function () {
+        const inputs = document.querySelectorAll('input[type="text"]');
+        const values = [];
+        inputs.forEach(i => values.push(i.value))
+        if (values.includes('')) return alert("You have to choose before submitting")
+        else return document.getElementById("addGuest").submit()
+    });
+</script>
+
+</html>

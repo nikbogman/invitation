@@ -1,4 +1,4 @@
-import { Database } from './deps.ts';
+import { Database } from '../deps.ts';
 
 export interface Guest {
     id: string,
@@ -8,4 +8,4 @@ export interface Guest {
     attending?: boolean
 }
 
-export const db = new Database<Guest>('./db.json');
+export const db = new Database<Guest>("db.json");
