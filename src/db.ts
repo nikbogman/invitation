@@ -8,4 +8,4 @@ export interface Guest {
     attending?: boolean
 }
 
-export const db = new Database<Guest>("db.json");
+export const db = new Database<Guest>();
