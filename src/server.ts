@@ -17,7 +17,10 @@ app.use(async (ctx, next) => {
         await next();
     } catch (err) {
         if (err.status === 404) {
-            ctx.response.body = await renderEjs(`error`, {});
+            ctx.response.body = await renderEjs(`error`, { data: {
+                status: err.status,
+                message: err.message
+            }});
         } else {
             throw err;
         }
@@ -29,7 +32,7 @@ const router = new Router();
 router
     .use("/guest/:id", async (ctx, next) => {
         const guest = await db.findOne({ id: ctx.params.id });
-        if (!guest) return ctx.throw(404);
+        if (!guest) return ctx.throw(404, "Guest is not found");
         ctx.state.guest = guest;
         await next();
     })
@@ -57,7 +60,6 @@ router
     .get("/", ctx => ctx.response.redirect("/admin"))
     .get("/admin", async ctx => {
         const guests  = await db.findMany({});
-        console.log(guests)
         ctx.response.body = await renderEjs(`admin`, {data: guests});
     })
     .post("/admin", async ctx => {

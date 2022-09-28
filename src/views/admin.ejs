@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Admin</title>
 </head>
 
 <style>
@@ -17,24 +17,34 @@
             sans-serif;
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+    }
 
+    * {
         font-size: calc(10px + 2vmin);
     }
 
-    .formdiv {
+
+    div.form-div {
         display: flex;
         justify-content: center;
         text-align: center;
     }
 
+    h1 {
+        width: 100%;
+        font-size: calc(20px + 2vmin);
+        text-align: center;
+    }
+
     form {
-        padding: 5vh 0 5vh 0;
+        padding: 0 0 5vh 0;
         display: grid;
         justify-content: center;
         align-items: center;
     }
 
-    section {
+    section.form-section {
+        margin: 1.25vh 0 1.25vh 0;
         justify-self: end;
     }
 
@@ -53,35 +63,49 @@
     tr:nth-child(even) {
         background-color: #dddddd;
     }
+
+    td.yes {
+        background-color: green;
+    }
+
+    td.no {
+        background-color: red;
+    }
+
+    button.form-button {
+        margin-top: 1.25vh;
+        height: 10vh;
+    }
 </style>
 
 <body>
-    <div class="formdiv">
+    <h1>Add a guest</h1>
+    <div class="form-div">
         <form id="addGuest" action="/admin" method="POST">
-            <section>
-                <label for="abbriviation">abbriviaiton</label>
+            <section class="form-section">
+                <label for="abbriviation">Abbriviaiton</label>
                 <input type="text" name="abbriviation" />
             </section>
-            <section>
-                <label for="firstName">firstName</label>
+            <section class="form-section">
+                <label for="firstName">First name</label>
                 <input type="text" name="firstName" />
             </section>
-            <section>
-                <label for="lastName">lastName</label>
+            <section class="form-section">
+                <label for="lastName">Last name</label>
                 <input type="text" name="lastName" />
             </section>
             <input type="submit" disabled style="display: none" aria-hidden="true" />
-            <button id="submitButton">Send</button>
+            <button class="form-button" id="submitButton">Add</button>
         </form>
     </div>
     <div>
         <table>
             <tr>
                 <th>id</th>
-                <th>Abbr</th>
-                <th>firstname</th>
-                <th>lastname</th>
-                <th>attending</th>
+                <th>abbr</th>
+                <th>first name</th>
+                <th>last name</th>
+                <th>att</th>
             </tr>
             <% for (const guest of data) { %>
                 <tr>
@@ -97,13 +121,16 @@
                     <td>
                         <%= guest.lastName %>
                     </td>
-                    <td>
-                        <% if(guest.attending===undefined) { %>
-                            0
-                            <% } else { %>
-                                <%= guest.attending ? "yes" : "no" %>
+                    <% if(guest.attending===undefined) { %>
+                        <td></td>
+                        <% } else { %>
+                            <% if(guest.attending) {%>
+                                <td class="yes">yes</td>
+                                <% } else { %>
+                                    <td class="no">no</td>
                                     <% } %>
-                    </td>
+                                        <% } %>
+
                 </tr>
                 <% } %>
         </table>

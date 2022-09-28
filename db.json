@@ -3,6 +3,13 @@
 		"id": "w0YwRP",
 		"abbriviation": "Mr",
 		"firstName": "Bate",
-		"lastName": "Pesho"
+		"lastName": "Pesho",
+		"attending": true
+	},
+	{
+		"id": "FEBsyy",
+		"abbriviation": "Mr",
+		"firstName": "Stephan",
+		"lastName": "Nikola"
 	}
 ]
